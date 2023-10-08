@@ -1,0 +1,6 @@
+#ifndef MATH_PRIVATE_INTEGRATION_HPP
+#define MATH_PRIVATE_INTEGRATION_HPP
+
+#include "GaussKronrod.hpp"
+
+#endif // MATH_PRIVATE_INTEGRATION_HPP
