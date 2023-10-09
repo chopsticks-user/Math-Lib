@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                // "/home/frost/.miniconda3/envs/root-cern-env/include"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/g++",
+            // "compilerPath": "/home/frost/.miniconda3/envs/root-cern-env/bin/g++",
+            "cppStandard": "c++20"
+        }
+    ],
+    "version": 4
+}
