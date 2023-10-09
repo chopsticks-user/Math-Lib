@@ -1,6 +1,7 @@
 #ifndef MATH_SOURCE_PRIVATE_BASE_DEF_TYPENAME_HPP
 #define MATH_SOURCE_PRIVATE_BASE_DEF_TYPENAME_HPP
 
+#include <cmath>
 #include <iosfwd>
 #include <string>
 #include <vector>
@@ -19,6 +20,7 @@ typedef uint64_t U64;
 
 typedef float F32;
 typedef double F64;
+typedef F64 Real;
 
 typedef bool B8;
 typedef int32_t B32;
