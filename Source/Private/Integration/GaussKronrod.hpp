@@ -14,7 +14,7 @@ Real gaussKronrodLineImpl(const std::vector<Real (*)(Real t)> &curve,
 
 Real gaussKronrodDoubleImpl();
 
-Real gaussKronrodDoubleTriple();
+Real gaussKronrodTripleImpl();
 
 } // namespace Math::Internal::Integration
 

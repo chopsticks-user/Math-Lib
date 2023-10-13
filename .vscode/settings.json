@@ -79,6 +79,8 @@
         "condition_variable": "cpp",
         "set": "cpp",
         "forward_list": "cpp",
-        "__locale": "cpp"
+        "__locale": "cpp",
+        "__functional_03": "cpp",
+        "any": "cpp"
     }
 }

@@ -1,8 +1,7 @@
 #ifndef MATH_SOURCE_PRIVATE_BASE_UTILITY_RANDOM_HPP
 #define MATH_SOURCE_PRIVATE_BASE_UTILITY_RANDOM_HPP
 
-#include "Platform.hpp"
-#include "Typename.hpp"
+#include "Def.hpp"
 
 namespace Math::Internal::Base {
 
