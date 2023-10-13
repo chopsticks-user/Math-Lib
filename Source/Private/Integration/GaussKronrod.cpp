@@ -136,11 +136,42 @@ Real gaussKronrodSimpleImpl(Real (*f)(Real t), Real lowerBound,
   }
 
   Real result = 0.0, scale = (upperBound - lowerBound) / 2.0;
-  for (int i = 0; i < nKronrodPoints; ++i) {
+  for (I64 iKP = 0; iKP < nKronrodPoints; ++iKP) {
     result +=
-        kronrodWeights[i] * f(scale * kronrodNodes[i] + scale + lowerBound);
+        kronrodWeights[iKP] * f(scale * kronrodNodes[iKP] + scale + lowerBound);
   }
   return result * scale;
+}
+
+Real gaussKronrodLineImpl(const std::vector<Real (*)(Real t)> &curve,
+                          const std::vector<Real> &startPoint,
+                          const std::vector<Real> &endPoint) {
+  if (curve.size() != startPoint.size() ||
+      startPoint.size() != endPoint.size()) {
+    throw;
+  }
+
+  I64 nDims = curve.size();
+
+  std::vector<Real> states(nDims), scales(nDims);
+  for (I64 iDim = 0; iDim < nDims; ++iDim) {
+    scales[iDim] = (endPoint[iDim] - startPoint[iDim]) / 2.0;
+  }
+
+  for (I64 iKP = 0; iKP < nKronrodPoints; ++iKP) {
+    for (I64 iDim = 0; iDim < nDims; ++iDim) {
+      states[iDim] =
+          kronrodWeights[iKP] * curve[iDim](scales[iDim] * kronrodNodes[iKP] +
+                                            scales[iDim] + startPoint[iDim]);
+    }
+  }
+
+  Real result = 0.0;
+  for (I64 iDim = 0; iDim < nDims; ++iDim) {
+    result += states[iDim] * scales[iDim];
+  }
+
+  return result;
 }
 
 } // namespace Math::Internal::Integration

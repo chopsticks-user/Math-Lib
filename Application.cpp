@@ -8,24 +8,21 @@
 #include <random>
 #include <vector>
 
+using Math::Internal::Integration::gaussKronrodLineImpl;
 using Math::Internal::Integration::IntBound;
-using Math::Internal::Integration::monteCarloSimpleImpl;
 
-auto f = [](std::vector<double> x) {
-  double sum = 0.0;
-  for (auto xi : x) {
-    sum += xi;
-  }
-  return sum * sum;
-};
+auto f1 = [](Math::Real x) { return x + 1; };
+auto f2 = [](Math::Real y) { return y + 1; };
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char **argv) {
   std::chrono::high_resolution_clock clock;
 
   auto c_start = clock.now();
 
-  std::vector<IntBound> bounds{{26, -9}, {0, 1}, {-1, 1}};
-  std::cout << std::setprecision(15) << monteCarloSimpleImpl(f, bounds) << '\n';
+  std::vector<Math::Real (*)(Math::Real t)> functions{f1, f2};
+  std::vector<Math::Real> start{0.0, 0.0}, end{100.0, 21.0};
+  std::cout << std::setprecision(15)
+            << gaussKronrodLineImpl(functions, start, end) << '\n';
 
   auto c_end = clock.now();
   std::cout << "Time eslapsed: "

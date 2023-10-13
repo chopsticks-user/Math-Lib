@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <iosfwd>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
